@@ -60,6 +60,7 @@
 
 <script>
 import axios from "axios";
+import store from "../store";
 import { toast } from "bulma-toast";
 
 export default {
@@ -73,7 +74,7 @@ export default {
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       this.errors = [];
 
       if (this.username.trim() == "") {
@@ -89,11 +90,13 @@ export default {
       }
 
       if (!this.errors.length) {
+        store.commit("setIsLoading", true);
+
         const formData = {
           username: this.username,
           password: this.password1,
         };
-        axios
+        await axios
           .post("/api/v1/users/", formData)
           .then((response) => {
             toast({
@@ -118,6 +121,7 @@ export default {
             }
           });
       }
+      store.commit("setIsLoading", false);
     },
   },
 };
