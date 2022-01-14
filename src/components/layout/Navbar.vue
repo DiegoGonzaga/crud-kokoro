@@ -10,10 +10,10 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <router-link to="sign-up" class="button is-success"
+            <router-link to="/sign-up" class="button is-success"
               ><strong>Sign up</strong></router-link
             >
-            <router-link to="log-in" class="button is-light"
+            <router-link to="/log-in" class="button is-light"
               >Log in
             </router-link>
           </div>
